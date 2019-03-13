@@ -13,10 +13,10 @@ import frc.robot.Robot;
 /**
  * An example command.  You can replace me with your own command.
  */
-public class squishyExhaust extends Command {
+public class squishyTiltDown extends Command {
   private double speed = 0;
 
-  public squishyExhaust(double p_val) {
+  public squishyTiltDown(double p_val) {
     // Use requiresS() here to declare subsystem dependencies
     speed = p_val;
     requires(Robot.squishy);
@@ -30,7 +30,7 @@ public class squishyExhaust extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.squishy.blowout(speed);
+    Robot.squishy.tiltdown(speed);
   }
 
   // Make this return true when this Command no longer needs to run execute()

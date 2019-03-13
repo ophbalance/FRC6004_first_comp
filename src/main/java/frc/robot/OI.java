@@ -20,10 +20,16 @@ public class OI {
   public Joystick _operator = new Joystick(RobotMap.OI_OP_CONTROLLER);
   public Joystick _squishy = new Joystick(RobotMap.OI_SQUISHY);
 
-  public Button LADfrontClimb = new JoystickButton(_operator, 1);
-  public Button LADrearClimb = new JoystickButton(_operator, 2);
-  public Button LADallClimb = new JoystickButton(_operator, 3);
-  public Button LADDriveFwd = new JoystickButton(_operator, 4);
+  public Button LADfrontClimb = new JoystickButton(_operator, 5);
+  public Button LADrearClimb = new JoystickButton(_operator, 4);
+  public Button LADfrontDrop = new JoystickButton(_operator, 2);
+  public Button LADrearDrop = new JoystickButton(_operator, 3);
+  public Button LADallClimb = new JoystickButton(_operator, 6);
+  public Button LADDriveFwd = new JoystickButton(_operator, 1);
+  public Button SquishyEndoIn = new JoystickButton(_operator, 7);
+  public Button SquishyEndoOut = new JoystickButton(_operator, 8);
+  public Button SquishyClawOpen = new JoystickButton(_operator, 10);
+  public Button SquishyClawClose = new JoystickButton(_operator, 9);
   //public Button UpFront = new JoystickButton(_operator, 5);
   //public Button UpBak = new JoystickButton(_operator, 6);
 
@@ -33,6 +39,12 @@ public class OI {
     LADrearClimb.whileHeld(new LADRearUpdate(RobotMap.REAR_SPEED));
     LADallClimb.whileHeld(new LADRearUpdate(RobotMap.REAR_SPEED));
     LADDriveFwd.whileHeld(new LADUpdateDrive(RobotMap.DRIVE_SPEED));
+
+    SquishyEndoIn.whileHeld(new squishyIntake(RobotMap.INTAKE_SPEED));
+    SquishyEndoOut.whileHeld(new squishyExhaust(RobotMap.EXHAUST_SPEED));
+    SquishyClawOpen.whileHeld(new squishyExhaust(RobotMap.MOVE_JAWS));
+    SquishyClawClose.whileHeld(new squishyExhaust(RobotMap.MOVE_JAWS));
+
 
     //RunClimbDown.whileHeld(new climbdown());    
     //RunDriveBack.whileHeld(new climbdriveback());

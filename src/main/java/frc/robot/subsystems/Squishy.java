@@ -30,16 +30,16 @@ public class Squishy extends Subsystem {
   }
 
 
-    public void suckin() {
+    public void suckin(double p_val) {
       // Update motor speed to passed in value
-      leftendo.set(RobotMap.INTAKE_SPEED);
-      rightendo.set(RobotMap.INTAKE_SPEED);
+      leftendo.set(p_val);
+      rightendo.set(p_val);
     }
 
-    public void blowout() {
+    public void blowout(double p_val) {
       // Update motor speed to passed in value
-      leftendo.set(-RobotMap.EXHAUST_SPEED);
-      rightendo.set(-RobotMap.EXHAUST_SPEED);
+      leftendo.set(-p_val);
+      rightendo.set(-p_val);
     }
 
     public void tilt() {
@@ -47,13 +47,24 @@ public class Squishy extends Subsystem {
       tilt.set(-Robot.m_oi._operator.getRawAxis(1));
     }
 
-    public void openup() {
+    public void tiltup(double p_val) {
       // Update motor speed to passed in value
-      open.set(RobotMap.MOVE_JAWS);
+      tilt.set(p_val);
     }
 
-    public void closeup() {
+    public void tiltdown(double p_val) {
       // Update motor speed to passed in value
-      open.set(-RobotMap.MOVE_JAWS);
+      tilt.set(-p_val);
+    }
+
+    public void openup(double p_val) {
+      // Update motor speed to passed in value
+      open.set(p_val);
+    }
+    
+
+    public void closeup(double p_val) {
+      // Update motor speed to passed in value
+      open.set(-p_val);
     }
 }

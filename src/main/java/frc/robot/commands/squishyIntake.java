@@ -14,8 +14,11 @@ import frc.robot.Robot;
  * An example command.  You can replace me with your own command.
  */
 public class squishyIntake extends Command {
-  public squishyIntake() {
+  private double speed = 0;
+
+  public squishyIntake(double p_val) {
     // Use requiresS() here to declare subsystem dependencies
+    speed = p_val;
     requires(Robot.squishy);
   }
 
@@ -27,7 +30,7 @@ public class squishyIntake extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.squishy.suckin();
+    Robot.squishy.suckin(speed);
   }
 
   // Make this return true when this Command no longer needs to run execute()
