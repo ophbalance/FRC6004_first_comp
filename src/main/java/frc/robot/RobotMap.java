@@ -21,8 +21,8 @@ public class RobotMap {
   public static final int DRIVETRAIN_RIGHT_BACK = 12;  //CAN
   
   //LAD
-  public static final int LAD_FRONT = 5;        //CAN
-  public static final int LAD_BACK = 6;         //CAN
+  public static final int LAD_FRONT = 0;        //CAN
+  public static final int LAD_BACK = 1;         //CAN
   public static final int LAD_DRIVE = 3;        //PWM
   public static final double FRONT_SPEED = .2;  //const
   public static final double REAR_SPEED = .2;   //const

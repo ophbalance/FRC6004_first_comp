@@ -44,7 +44,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     
-    try {
+    //try {
 			/***********************************************************************
 			 * navX-MXP:
 			 * - Communication via RoboRIO MXP (SPI, I2C, TTL UART) and USB.            
@@ -56,10 +56,10 @@ public class Robot extends TimedRobot {
 			 * 
 			 * Multiple navX-model devices on a single robot are supported.
 			 ************************************************************************/
-            ahrs = new AHRS(SPI.Port.kMXP); 
-        } catch (RuntimeException ex ) {
-            DriverStation.reportError("Error instantiating navX MXP:  " + ex.getMessage(), true);
-        }
+      //      ahrs = new AHRS(SPI.Port.kMXP); 
+        //} catch (RuntimeException ex ) {
+          //  DriverStation.reportError("Error instantiating navX MXP:  " + ex.getMessage(), true);
+       // }
         
     squishy = new Squishy();
     lad =  new LAD();

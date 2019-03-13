@@ -15,6 +15,8 @@ import com.revrobotics.CANPIDController;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import edu.wpi.first.wpilibj.Spark;
+
 import frc.robot.commands.*;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -27,20 +29,30 @@ import edu.wpi.first.wpilibj.VictorSP;
 public class LAD extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private CANSparkMax f_motor;
-  private CANSparkMax r_motor;
   
   static final double kOffBalanceAngleThresholdDegrees = 10;
   static final double kOonBalanceAngleThresholdDegrees  = 5;
   boolean autoBalanceXMode=false;
   boolean autoBalanceYMode=false;
-  VictorSP driveMotor = new VictorSP(RobotMap.LAD_DRIVE);
+  VictorSP driveMotor = null;
+  Spark f_motor = null;
+  Spark r_motor = null;
+    public LAD() {
+      
+    }
 
   @Override
   public void initDefaultCommand() {
-    f_motor = new CANSparkMax(RobotMap.LAD_FRONT,MotorType.kBrushless);
-    r_motor = new CANSparkMax(RobotMap.LAD_BACK,MotorType.kBrushless);
-  
+    
+    driveMotor = new VictorSP(RobotMap.LAD_DRIVE);
+      
+    
+    
+    
+    f_motor = new Spark(RobotMap.LAD_FRONT);
+        r_motor = new Spark(RobotMap.LAD_BACK);
+        updateRear(0);
+      updateFront(0);
     // Set the default command for a subsystem here.
      //setDefaultCommand(new squishyaxis());
   }
@@ -49,17 +61,11 @@ public class LAD extends Subsystem {
   public void updateFront(double p_val) {
     // Update motor speed to passed in value
     f_motor.set(p_val);
-    SmartDashboard.putNumber("Voltage", f_motor.getBusVoltage());
-    SmartDashboard.putNumber("Temperature", f_motor.getMotorTemperature());
-    SmartDashboard.putNumber("Output", f_motor.getAppliedOutput());
   }
 
   public void updateRear(double p_val) {
     // Update motor speed to passed in value
     r_motor.set(p_val);
-    SmartDashboard.putNumber("Voltage", r_motor.getBusVoltage());
-    SmartDashboard.putNumber("Temperature", r_motor.getMotorTemperature());
-    SmartDashboard.putNumber("Output", r_motor.getAppliedOutput());
   }
 
   public void updateAxis() {
