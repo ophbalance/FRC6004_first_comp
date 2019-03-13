@@ -1,0 +1,59 @@
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
+
+package frc.robot.subsystems;
+
+import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.Spark;
+import frc.robot.Robot;
+import frc.robot.RobotMap;
+import frc.robot.commands.*;
+/**
+ * An example subsystem.  You can replace me with your own Subsystem.
+ */
+public class Squishy extends Subsystem {
+  // Put methods for controlling this subsystem
+  // here. Call these from Commands.
+    Spark leftendo = new Spark(RobotMap.INTAKE_LEFT);
+    Spark rightendo = new Spark(RobotMap.INTAKE_RIGHT);
+    Spark open = new Spark(RobotMap.OPEN);
+    Spark tilt = new Spark(RobotMap.TILT);
+
+  @Override
+  public void initDefaultCommand() {
+    // Set the default command for a subsystem here.
+     setDefaultCommand(new squishyAxis());
+  }
+
+
+    public void suckin() {
+      // Update motor speed to passed in value
+      leftendo.set(RobotMap.INTAKE_SPEED);
+      rightendo.set(RobotMap.INTAKE_SPEED);
+    }
+
+    public void blowout() {
+      // Update motor speed to passed in value
+      leftendo.set(-RobotMap.EXHAUST_SPEED);
+      rightendo.set(-RobotMap.EXHAUST_SPEED);
+    }
+
+    public void tilt() {
+      // Update motor speed to passed in value
+      tilt.set(-Robot.m_oi._operator.getRawAxis(1));
+    }
+
+    public void openup() {
+      // Update motor speed to passed in value
+      open.set(RobotMap.MOVE_JAWS);
+    }
+
+    public void closeup() {
+      // Update motor speed to passed in value
+      open.set(-RobotMap.MOVE_JAWS);
+    }
+}
