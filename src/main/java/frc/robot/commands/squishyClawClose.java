@@ -31,6 +31,7 @@ public class squishyClawClose extends Command {
   @Override
   protected void execute() {
     Robot.squishy.closeup(speed);
+    System.out.println("squishyClawClose called");
   }
 
   // Make this return true when this Command no longer needs to run execute()

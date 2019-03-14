@@ -32,6 +32,7 @@ public class LADUpdateDrive extends Command {
   @Override
   protected void execute() {
     Robot.lad.updateDriveMotor(m_speed);
+    System.out.println("LADUpdateDrive called");
   }
 
   // Make this return true when this Command no longer needs to run execute()

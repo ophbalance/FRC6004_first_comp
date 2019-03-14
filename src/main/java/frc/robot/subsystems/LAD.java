@@ -67,11 +67,15 @@ public class LAD extends Subsystem {
 
     updateFront(input);
     updateRear(input);
+    System.out.println("LAD axis up/down");
+    System.out.println(input);
   }
 
   public void updateDriveMotor(double p_val) {
     // Update motor speed to passed in value
     driveMotor.set(p_val);
+    System.out.println("Drive Motor");
+    System.out.println(p_val);
   }
 
   public void updateAll(double p_front, double p_rear) {

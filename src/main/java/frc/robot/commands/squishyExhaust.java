@@ -31,6 +31,7 @@ public class squishyExhaust extends Command {
   @Override
   protected void execute() {
     Robot.squishy.blowout(speed);
+    System.out.println("squishyExhaust called");
   }
 
   // Make this return true when this Command no longer needs to run execute()
