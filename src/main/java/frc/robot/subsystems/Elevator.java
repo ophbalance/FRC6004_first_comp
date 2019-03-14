@@ -8,7 +8,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.VictorSP;
 
 import frc.robot.RobotMap;
 import frc.robot.commands.*;
@@ -18,7 +18,8 @@ import frc.robot.commands.*;
 public class Elevator extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-    Spark lift = new Spark(RobotMap.LIFT);
+    VictorSP lift = new VictorSP(RobotMap.LIFT);
+    
 
   @Override
   public void initDefaultCommand() {

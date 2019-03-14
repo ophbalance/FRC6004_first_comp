@@ -44,7 +44,7 @@ public class Squishy extends Subsystem {
 
     public void tilt() {
       // Update motor speed to passed in value
-      tilt.set(-Robot.m_oi._operator.getRawAxis(1));
+      //tilt.set(p_val);
     }
 
     public void tiltup(double p_val) {

@@ -20,10 +20,10 @@ public class OI {
   public Joystick _operator = new Joystick(RobotMap.OI_OP_CONTROLLER);
   public Joystick _squishy = new Joystick(RobotMap.OI_SQUISHY);
 
-  public Button LADfrontClimb = new JoystickButton(_operator, 5);
-  public Button LADrearClimb = new JoystickButton(_operator, 4);
-  public Button LADfrontDrop = new JoystickButton(_operator, 2);
-  public Button LADrearDrop = new JoystickButton(_operator, 3);
+  public Button LADfrontClimb = new JoystickButton(_operator, 2);
+  public Button LADrearClimb = new JoystickButton(_operator, 3);
+  public Button LADfrontDrop = new JoystickButton(_operator, 5);
+  public Button LADrearDrop = new JoystickButton(_operator, 4);
   public Button LADallClimb = new JoystickButton(_operator, 6);
   public Button LADDriveFwd = new JoystickButton(_operator, 1);
   public Button SquishyEndoIn = new JoystickButton(_operator, 7);
@@ -38,7 +38,7 @@ public class OI {
     LADfrontClimb.whileHeld(new LADFrontUpdate(-RobotMap.FRONT_SPEED));
     LADrearClimb.whileHeld(new LADRearUpdate(-RobotMap.REAR_SPEED));
     
-    LADrearDrop.whileHeld(new LADFrontUpdate(RobotMap.FRONT_SPEED));
+    LADfrontDrop.whileHeld(new LADFrontUpdate(RobotMap.FRONT_SPEED));
     LADrearDrop.whileHeld(new LADRearUpdate(RobotMap.REAR_SPEED));
 
     LADallClimb.whileHeld(new LADRearUpdate(RobotMap.REAR_SPEED));
