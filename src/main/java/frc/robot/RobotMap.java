@@ -21,22 +21,22 @@ public class RobotMap {
   public static final int DRIVETRAIN_RIGHT_BACK = 12;  //CAN
   
   //LAD
-  public static final int LAD_FRONT = 0;        //CAN
-  public static final int LAD_BACK = 1;         //CAN
+  public static final int LAD_FRONT = 0;        //PWM
+  public static final int LAD_BACK = 1;         //PWM
   public static final int LAD_DRIVE = 3;        //PWM
   public static final double FRONT_SPEED = .2;  //const
   public static final double REAR_SPEED = .2;   //const
   public static final double DRIVE_SPEED = .3;   //const
   
   //Elevator
-  public static final int LIFT = 3;             //PWM
+  public static final int LIFT = 8;             //PWM
   public static final double LIFT_SPEED = .3;   //const
 
   //Squishy
-  public static final int INTAKE_LEFT = 5;        //PWM
+  public static final int INTAKE_LEFT = 7;        //PWM
   public static final int INTAKE_RIGHT = 6;       //PWM
-  public static final int OPEN = 7;               //PWM
-  public static final int TILT = 8;               //PWM
+  public static final int OPEN = 5;               //PWM
+  public static final int TILT = 4;               //PWM
   public static final double INTAKE_SPEED = .2;   //const
   public static final double EXHAUST_SPEED = .2;  //const
   public static final double MOVE_JAWS = .2;      //const

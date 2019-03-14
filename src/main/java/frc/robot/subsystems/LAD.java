@@ -34,38 +34,31 @@ public class LAD extends Subsystem {
   static final double kOonBalanceAngleThresholdDegrees  = 5;
   boolean autoBalanceXMode=false;
   boolean autoBalanceYMode=false;
-  VictorSP driveMotor = null;
-  Spark f_motor = null;
-  Spark r_motor = null;
-    public LAD() {
-      
-    }
+  VictorSP driveMotor = new VictorSP(RobotMap.LAD_DRIVE);
+  Spark f_motor = new Spark(RobotMap.LAD_FRONT);
+  Spark r_motor = new Spark(RobotMap.LAD_BACK);
+
 
   @Override
   public void initDefaultCommand() {
-    
-    driveMotor = new VictorSP(RobotMap.LAD_DRIVE);
-      
-    
-    
-    
-    f_motor = new Spark(RobotMap.LAD_FRONT);
-        r_motor = new Spark(RobotMap.LAD_BACK);
-        updateRear(0);
-      updateFront(0);
     // Set the default command for a subsystem here.
      //setDefaultCommand(new squishyaxis());
+     
   }
 
 
   public void updateFront(double p_val) {
     // Update motor speed to passed in value
     f_motor.set(p_val);
+    System.out.println("front motor");
+    System.out.println(f_motor);
   }
 
   public void updateRear(double p_val) {
     // Update motor speed to passed in value
     r_motor.set(p_val);
+    System.out.println("rear motor");
+    System.out.println(r_motor);
   }
 
   public void updateAxis() {

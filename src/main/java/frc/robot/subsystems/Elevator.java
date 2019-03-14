@@ -18,18 +18,18 @@ import frc.robot.commands.*;
 public class Elevator extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-    //Spark lift = new Spark(RobotMap.LIFT);
+    Spark lift = new Spark(RobotMap.LIFT);
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-     //setDefaultCommand(new liftAxis());
+     setDefaultCommand(new liftAxis());
   }
 
 
     public void update(double p_val) {
       // Update motor speed to passed in value
-     // lift.set(RobotMap.LIFT_SPEED);
+      lift.set(RobotMap.LIFT_SPEED);
     }
 
 }

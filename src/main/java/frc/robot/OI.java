@@ -35,15 +35,19 @@ public class OI {
 
   public OI () {
 
-    LADfrontClimb.whileHeld(new LADFrontUpdate(RobotMap.FRONT_SPEED));
-    LADrearClimb.whileHeld(new LADRearUpdate(RobotMap.REAR_SPEED));
+    LADfrontClimb.whileHeld(new LADFrontUpdate(-RobotMap.FRONT_SPEED));
+    LADrearClimb.whileHeld(new LADRearUpdate(-RobotMap.REAR_SPEED));
+    
+    LADrearDrop.whileHeld(new LADFrontUpdate(RobotMap.FRONT_SPEED));
+    LADrearDrop.whileHeld(new LADRearUpdate(RobotMap.REAR_SPEED));
+
     LADallClimb.whileHeld(new LADRearUpdate(RobotMap.REAR_SPEED));
     LADDriveFwd.whileHeld(new LADUpdateDrive(RobotMap.DRIVE_SPEED));
 
     SquishyEndoIn.whileHeld(new squishyIntake(RobotMap.INTAKE_SPEED));
     SquishyEndoOut.whileHeld(new squishyExhaust(RobotMap.EXHAUST_SPEED));
     SquishyClawOpen.whileHeld(new squishyExhaust(RobotMap.MOVE_JAWS));
-    SquishyClawClose.whileHeld(new squishyExhaust(RobotMap.MOVE_JAWS));
+    SquishyClawClose.whileHeld(new squishyExhaust(-RobotMap.MOVE_JAWS));
 
 
     //RunClimbDown.whileHeld(new climbdown());    
