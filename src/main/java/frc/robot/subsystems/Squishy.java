@@ -26,7 +26,7 @@ public class Squishy extends Subsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-     setDefaultCommand(new squishyAxis());
+    // setDefaultCommand(new squishyAxis());
   }
 
 
@@ -45,6 +45,11 @@ public class Squishy extends Subsystem {
     public void tilt() {
       // Update motor speed to passed in value
       //tilt.set(p_val);
+    }
+
+    public void tiltupdate(double p_val) {
+      // Update motor speed to passed in value
+      tilt.set(p_val);
     }
 
     public void tiltup(double p_val) {

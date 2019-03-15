@@ -10,11 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 import frc.robot.Robot;
-import com.revrobotics.CANEncoder;
-import com.revrobotics.CANPIDController;
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.ControlType;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
 import edu.wpi.first.wpilibj.Spark;
 
 import frc.robot.commands.*;
@@ -35,8 +31,10 @@ public class LAD extends Subsystem {
   boolean autoBalanceXMode=false;
   boolean autoBalanceYMode=false;
   VictorSP driveMotor = new VictorSP(RobotMap.LAD_DRIVE);
-  Spark f_motor = new Spark(RobotMap.LAD_FRONT);
-  Spark r_motor = new Spark(RobotMap.LAD_BACK);
+  VictorSP f_motor = new VictorSP(RobotMap.LAD_FRONT);
+  VictorSP r_motor = new VictorSP(RobotMap.LAD_BACK);
+  //Spark f_motor = new Spark(RobotMap.LAD_FRONT);
+  //Spark r_motor = new Spark(RobotMap.LAD_BACK);
 
 
   @Override

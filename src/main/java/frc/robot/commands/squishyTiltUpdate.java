@@ -13,13 +13,14 @@ import frc.robot.Robot;
 /**
  * An example command.  You can replace me with your own command.
  */
-public class squishyTiltUp extends Command {
+public class squishyTiltUpdate extends Command {
   private double speed = 0;
 
-  public squishyTiltUp(double p_val) {
+  public squishyTiltUpdate(double p_val) {
     // Use requiresS() here to declare subsystem dependencies
     speed = p_val;
     requires(Robot.squishy);
+    System.out.println("Squishy Tilt Update");
   }
 
   // Called just before this Command runs the first time
@@ -30,7 +31,7 @@ public class squishyTiltUp extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.squishy.tiltup(speed);
+    Robot.squishy.tiltupdate(speed);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -42,7 +43,7 @@ public class squishyTiltUp extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.squishy.tiltup(0);
+    Robot.squishy.tiltupdate(0);
   }
 
   // Called when another command which requires one or more of the same

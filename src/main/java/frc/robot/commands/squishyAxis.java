@@ -28,6 +28,7 @@ public class squishyAxis extends Command {
   @Override
   protected void execute() {
     Robot.squishy.tilt();
+    System.out.println("Squishy Tilt Axis called");
   }
 
   // Make this return true when this Command no longer needs to run execute()

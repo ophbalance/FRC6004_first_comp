@@ -30,15 +30,16 @@ public class RobotMap {
   
   //Elevator
   public static final int LIFT = 3;             //PWM
-  public static final double LIFT_SPEED = .4;   //const
+  public static final double LIFT_SPEED = .3;   //const
 
   //Squishy
   public static final int INTAKE_LEFT = 7;        //PWM
   public static final int INTAKE_RIGHT = 6;       //PWM
-  public static final int OPEN = 8;               //PWM
-  public static final int TILT = 5;               //PWM
+  public static final int OPEN = 5;               //PWM
+  public static final int TILT = 4;               //PWM
   public static final double INTAKE_SPEED = .3;   //const
   public static final double EXHAUST_SPEED = .3;  //const
+  public static final double TILT_SPEED = .3;   //const
   public static final double MOVE_JAWS = .3;      //const
 
   // Joysticks
