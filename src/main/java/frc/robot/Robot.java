@@ -18,6 +18,14 @@ import frc.robot.subsystems.*;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.SPI;
 
+
+/* UNCOMMENT ME TO USE DRIVE IN THIS FILE 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.DemandType;
+import com.ctre.phoenix.motorcontrol.InvertType;
+import com.ctre.phoenix.motorcontrol.can.*;
+*/
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -29,8 +37,15 @@ public class Robot extends TimedRobot {
   public static Squishy squishy;
   public static LAD lad;
   public static Elevator elevator;
+  public static DriveTrain drive;
   public static AHRS ahrs;
-  //public static Elevator elevator = null;
+  /* UNCOMMENT ME TO USE DRIVE IN THIS FILE 
+  WPI_TalonSRX _leftMaster = new WPI_TalonSRX(11);
+    WPI_TalonSRX _rightMaster = new WPI_TalonSRX(10);
+    WPI_VictorSPX  _leftFollow = new WPI_VictorSPX (13);
+    WPI_VictorSPX  _rightFollow = new WPI_VictorSPX (12);
+    DifferentialDrive _drive = new DifferentialDrive(_leftMaster, _rightMaster);
+  */
 
   public static OI m_oi;
 
@@ -64,6 +79,9 @@ public class Robot extends TimedRobot {
     squishy = new Squishy();
     lad =  new LAD();
     elevator = new Elevator();
+    /* COMMENT ME TO USE DRIVE IN THIS FILE */
+    drive = new DriveTrain();
+    /* */
     m_oi = new OI();
     //m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
@@ -139,6 +157,22 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
+
+    /* UNCOMMENT ME TO USE DRIVE IN THIS FILE 
+    _leftMaster.configFactoryDefault();
+        _rightMaster.configFactoryDefault();
+        _leftFollow.configFactoryDefault();
+        _rightFollow.configFactoryDefault();
+        
+        _leftFollow.follow(_leftMaster);
+        _rightFollow.follow(_rightMaster);
+        
+        _leftMaster.setInverted(false); // <<<<<< Adjust this until robot drives forward when stick is forward
+        _rightMaster.setInverted(true); // <<<<<< Adjust this until robot drives forward when stick is forward
+        _leftFollow.setInverted(InvertType.FollowMaster);
+        _rightFollow.setInverted(InvertType.FollowMaster);
+        _drive.setRightSideInverted(false); // do not change this
+*/
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
@@ -150,7 +184,33 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+
+    /* UNCOMMENT ME TO USE DRIVE IN THIS FILE 
+    double forward = 1 * m_oi._gamepad.getY();
+    double turn = m_oi._gamepad.getTwist();
+    double liftup = m_oi._game2.getY();
+    double driveLift = m_oi._game2.getRawAxis(5);
+    forward = Deadband(forward);
+    turn = Deadband(turn);
+    _leftMaster.set(ControlMode.PercentOutput, forward, DemandType.ArbitraryFeedForward, -turn*.55);
+    _rightMaster.set(ControlMode.PercentOutput, forward, DemandType.ArbitraryFeedForward, -turn*.55);
+    _drive.arcadeDrive(-forward, turn);
+    */
   }
+
+  /** Deadband 5 percent, used on the gamepad */
+double Deadband(double value) {
+  /* Upper deadband */
+  if (value >= +0.35) 
+      return value;
+  
+  /* Lower deadband */
+  if (value <= -0.35)
+      return value;
+  
+  /* Outside deadband */
+  return 0;
+}
 
   /**
    * This function is called periodically during test mode.
