@@ -30,7 +30,7 @@ public class Elevator extends Subsystem {
 
     public void update(double p_val) {
       // Update motor speed to passed in value
-      lift.set(RobotMap.LIFT_SPEED);
+      lift.set(-p_val * .25);
     }
 
 }

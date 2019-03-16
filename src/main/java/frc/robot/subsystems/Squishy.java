@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.VictorSP;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.commands.*;
@@ -20,25 +21,31 @@ public class Squishy extends Subsystem {
   // here. Call these from Commands.
     Spark leftendo = new Spark(RobotMap.INTAKE_LEFT);
     Spark rightendo = new Spark(RobotMap.INTAKE_RIGHT);
-    Spark open = new Spark(RobotMap.OPEN);
+    VictorSP open = new VictorSP(RobotMap.OPEN);
     Spark tilt = new Spark(RobotMap.TILT);
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new squishyAxis());
+     setDefaultCommand(new squishyAxis());
   }
 
 
     public void suckin(double p_val) {
       // Update motor speed to passed in value
-      leftendo.set(p_val);
+      leftendo.set(-p_val);
+      rightendo.set(p_val);
+    }
+
+    public void intakeUpdate(double p_val) {
+      // Update motor speed to passed in value
+      leftendo.set(-p_val);
       rightendo.set(p_val);
     }
 
     public void blowout(double p_val) {
       // Update motor speed to passed in value
-      leftendo.set(-p_val);
+      leftendo.set(p_val);
       rightendo.set(-p_val);
     }
 

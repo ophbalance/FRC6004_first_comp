@@ -28,7 +28,7 @@ public class liftAxis extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.elevator.update(Robot.m_oi._operator.getRawAxis(RobotMap.OP_LEFTSTICK));
+    Robot.elevator.update(-Robot.m_oi._squishy.getRawAxis(RobotMap.SQUISHY_XBOX_RIGHTSTICK));
   }
 
   // Make this return true when this Command no longer needs to run execute()

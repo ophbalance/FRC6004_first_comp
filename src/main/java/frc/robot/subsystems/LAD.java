@@ -40,7 +40,7 @@ public class LAD extends Subsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-     //setDefaultCommand(new squishyaxis());
+     setDefaultCommand(new LADAxis());
      
   }
 
@@ -61,12 +61,14 @@ public class LAD extends Subsystem {
 
   public void updateAxis() {
     // Update motor speed to passed in value
-    double input = Robot.m_oi._operator.getRawAxis(RobotMap.LAD_FRONT);
+    double input = Robot.m_oi._operator.getRawAxis(RobotMap.OP_XBOX_LEFTSTICK);
+    double input2 = Robot.m_oi._operator.getRawAxis(RobotMap.OP_XBOX_RIGHTSTICK);
 
-    updateFront(input);
-    updateRear(input);
+    updateFront(-input);
+    updateRear(input2);
     System.out.println("LAD axis up/down");
     System.out.println(input);
+    System.out.println(input2);
   }
 
   public void updateDriveMotor(double p_val) {

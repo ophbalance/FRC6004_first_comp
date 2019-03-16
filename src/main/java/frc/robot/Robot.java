@@ -10,21 +10,24 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.DriverStation;
 import frc.robot.OI;
-import frc.robot.subsystems.*; 
+import frc.robot.subsystems.*;
+
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.SPI;
 
 
-/* UNCOMMENT ME TO USE DRIVE IN THIS FILE 
+  
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.DemandType;
 import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.can.*;
-*/
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -39,13 +42,13 @@ public class Robot extends TimedRobot {
   public static Elevator elevator;
   public static DriveTrain drive;
   public static AHRS ahrs;
-  /* UNCOMMENT ME TO USE DRIVE IN THIS FILE 
+   
   WPI_TalonSRX _leftMaster = new WPI_TalonSRX(11);
     WPI_TalonSRX _rightMaster = new WPI_TalonSRX(10);
     WPI_VictorSPX  _leftFollow = new WPI_VictorSPX (13);
     WPI_VictorSPX  _rightFollow = new WPI_VictorSPX (12);
     DifferentialDrive _drive = new DifferentialDrive(_leftMaster, _rightMaster);
-  */
+  
 
   public static OI m_oi;
 
@@ -148,7 +151,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
-    teleopPeriodic();
+    //                                                                                                                                                                                                                                                                                                                                                                                                    teleopPeriodic();
   }
 
   @Override
@@ -158,7 +161,7 @@ public class Robot extends TimedRobot {
     // continue until interrupted by another command, remove
     // this line or comment it out.
 
-    /* UNCOMMENT ME TO USE DRIVE IN THIS FILE 
+    
     _leftMaster.configFactoryDefault();
         _rightMaster.configFactoryDefault();
         _leftFollow.configFactoryDefault();
@@ -172,7 +175,7 @@ public class Robot extends TimedRobot {
         _leftFollow.setInverted(InvertType.FollowMaster);
         _rightFollow.setInverted(InvertType.FollowMaster);
         _drive.setRightSideInverted(false); // do not change this
-*/
+
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
@@ -185,17 +188,17 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
 
-    /* UNCOMMENT ME TO USE DRIVE IN THIS FILE 
-    double forward = 1 * m_oi._gamepad.getY();
-    double turn = m_oi._gamepad.getTwist();
-    double liftup = m_oi._game2.getY();
-    double driveLift = m_oi._game2.getRawAxis(5);
+    
+    double forward = 1 * m_oi._driver.getY();
+    double turn = m_oi._driver.getTwist();
+    //ouble liftup = m_oi._operator.getY();
+    //double driveLift = m_oi._game2.getRawAxis(5);
     forward = Deadband(forward);
     turn = Deadband(turn);
-    _leftMaster.set(ControlMode.PercentOutput, forward, DemandType.ArbitraryFeedForward, -turn*.55);
-    _rightMaster.set(ControlMode.PercentOutput, forward, DemandType.ArbitraryFeedForward, -turn*.55);
+    //_leftMaster.set(ControlMode.PercentOutput, forward, DemandType.ArbitraryFeedForward, turn*.55);
+    //_rightMaster.set(ControlMode.PercentOutput, forward, DemandType.ArbitraryFeedForward, -turn*.55);
     _drive.arcadeDrive(-forward, turn);
-    */
+    
   }
 
   /** Deadband 5 percent, used on the gamepad */
