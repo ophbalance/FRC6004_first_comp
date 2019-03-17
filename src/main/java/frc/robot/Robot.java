@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.DriverStation;
 import frc.robot.OI;
 import frc.robot.subsystems.*;
-
+import edu.wpi.first.wpilibj.Timer;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.SPI;
@@ -42,7 +42,7 @@ public class Robot extends TimedRobot {
   public static Elevator elevator;
   public static DriveTrain drive;
   public static AHRS ahrs;
-   
+  public double startTime=0;
   WPI_TalonSRX _leftMaster = new WPI_TalonSRX(11);
     WPI_TalonSRX _rightMaster = new WPI_TalonSRX(10);
     WPI_VictorSPX  _leftFollow = new WPI_VictorSPX (13);
@@ -131,6 +131,22 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     m_autonomousCommand = m_chooser.getSelected();
+    startTime = Timer.getFPGATimestamp();
+
+    _leftMaster.configFactoryDefault();
+        _rightMaster.configFactoryDefault();
+        _leftFollow.configFactoryDefault();
+        _rightFollow.configFactoryDefault();
+        
+        _leftFollow.follow(_leftMaster);
+        _rightFollow.follow(_rightMaster);
+        
+        _leftMaster.setInverted(false); // <<<<<< Adjust this until robot drives forward when stick is forward
+        _rightMaster.setInverted(true); // <<<<<< Adjust this until robot drives forward when stick is forward
+        _leftFollow.setInverted(InvertType.FollowMaster);
+        _rightFollow.setInverted(InvertType.FollowMaster);
+        _drive.setRightSideInverted(false); // do not change this
+
 
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -151,6 +167,22 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
+
+    //TIMED TEST
+    /*
+    if (startTime < 4){
+      _drive.arcadeDrive(-.4, 0);
+    }
+    */
+    double forward = 1 * m_oi._driver.getY();
+    double turn = m_oi._driver.getTwist();
+    //ouble liftup = m_oi._operator.getY();
+    //double driveLift = m_oi._game2.getRawAxis(5);
+    forward = Deadband(forward);
+    turn = Deadband(turn);
+    //_leftMaster.set(ControlMode.PercentOutput, forward, DemandType.ArbitraryFeedForward, turn*.55);
+    //_rightMaster.set(ControlMode.PercentOutput, forward, DemandType.ArbitraryFeedForward, -turn*.55);
+    _drive.arcadeDrive(-forward, turn);
     //                                                                                                                                                                                                                                                                                                                                                                                                    teleopPeriodic();
   }
 
