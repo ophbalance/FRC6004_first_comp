@@ -85,6 +85,20 @@ public class Robot extends TimedRobot {
     /* COMMENT ME TO USE DRIVE IN THIS FILE */
     drive = new DriveTrain();
     /* */
+    _leftMaster.configFactoryDefault();
+        _rightMaster.configFactoryDefault();
+        _leftFollow.configFactoryDefault();
+        _rightFollow.configFactoryDefault();
+        
+        _leftFollow.follow(_leftMaster);
+        _rightFollow.follow(_rightMaster);
+        
+        _leftMaster.setInverted(false); // <<<<<< Adjust this until robot drives forward when stick is forward
+        _rightMaster.setInverted(true); // <<<<<< Adjust this until robot drives forward when stick is forward
+        _leftFollow.setInverted(InvertType.FollowMaster);
+        _rightFollow.setInverted(InvertType.FollowMaster);
+        _drive.setRightSideInverted(false); // do not change this
+
     m_oi = new OI();
     //m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
@@ -133,19 +147,7 @@ public class Robot extends TimedRobot {
     m_autonomousCommand = m_chooser.getSelected();
     startTime = Timer.getFPGATimestamp();
 
-    _leftMaster.configFactoryDefault();
-        _rightMaster.configFactoryDefault();
-        _leftFollow.configFactoryDefault();
-        _rightFollow.configFactoryDefault();
-        
-        _leftFollow.follow(_leftMaster);
-        _rightFollow.follow(_rightMaster);
-        
-        _leftMaster.setInverted(false); // <<<<<< Adjust this until robot drives forward when stick is forward
-        _rightMaster.setInverted(true); // <<<<<< Adjust this until robot drives forward when stick is forward
-        _leftFollow.setInverted(InvertType.FollowMaster);
-        _rightFollow.setInverted(InvertType.FollowMaster);
-        _drive.setRightSideInverted(false); // do not change this
+    
 
 
     /*
@@ -193,7 +195,7 @@ public class Robot extends TimedRobot {
     // continue until interrupted by another command, remove
     // this line or comment it out.
 
-    
+    /*
     _leftMaster.configFactoryDefault();
         _rightMaster.configFactoryDefault();
         _leftFollow.configFactoryDefault();
@@ -207,7 +209,7 @@ public class Robot extends TimedRobot {
         _leftFollow.setInverted(InvertType.FollowMaster);
         _rightFollow.setInverted(InvertType.FollowMaster);
         _drive.setRightSideInverted(false); // do not change this
-
+*/
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
@@ -227,8 +229,8 @@ public class Robot extends TimedRobot {
     //double driveLift = m_oi._game2.getRawAxis(5);
     forward = Deadband(forward);
     turn = Deadband(turn);
-    //_leftMaster.set(ControlMode.PercentOutput, forward, DemandType.ArbitraryFeedForward, turn*.55);
-    //_rightMaster.set(ControlMode.PercentOutput, forward, DemandType.ArbitraryFeedForward, -turn*.55);
+    //_leftMaster.set(ControlMode.PercentOutput, forward, DemandType.ArbitraryFeedForward, turn*.35);
+    //_rightMaster.set(ControlMode.PercentOutput, forward, DemandType.ArbitraryFeedForward, -turn*.35);
     _drive.arcadeDrive(-forward, turn);
     
   }

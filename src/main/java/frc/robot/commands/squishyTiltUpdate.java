@@ -20,7 +20,7 @@ public class squishyTiltUpdate extends Command {
     // Use requiresS() here to declare subsystem dependencies
     speed = p_val;
     requires(Robot.squishy);
-    System.out.println("Squishy Tilt Update");
+    //System.out.println("Squishy Tilt Update");
   }
 
   // Called just before this Command runs the first time

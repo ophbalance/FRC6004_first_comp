@@ -32,7 +32,7 @@ public class LADRearUpdate extends Command {
   @Override
   protected void execute() {
     Robot.lad.updateRear(speed);
-    System.out.println("LADRearUpdate called");
+    //System.out.println("LADRearUpdate called");
   }
 
   // Make this return true when this Command no longer needs to run execute()

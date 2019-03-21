@@ -32,6 +32,7 @@ public class OI {
   public Button SquishyClawClose = new JoystickButton(_operator, 10);
 */
 public Button LADDriveFwd = new JoystickButton(_operator, 1);
+public Button LADUpdateAll = new JoystickButton(_operator, 4);
 
 //NEEDS TESTING, not sure button map
   public Button SquishyTiltUp = new JoystickButton(_squishy, 4);
@@ -52,6 +53,7 @@ public Button LADDriveFwd = new JoystickButton(_operator, 1);
     LADrearDrop.whileHeld(new LADRearUpdate(RobotMap.REAR_SPEED));
     */
     LADDriveFwd.whileHeld(new LADUpdateDrive(RobotMap.DRIVE_SPEED));
+    LADUpdateAll.whileHeld(new LADAllLift(RobotMap.FRONT_SPEED,RobotMap.REAR_SPEED));
 
 //NEEDS TESTING
 /*

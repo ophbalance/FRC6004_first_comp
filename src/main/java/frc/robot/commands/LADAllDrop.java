@@ -23,7 +23,7 @@ public class LADAllDrop extends Command {
     requires(Robot.lad);
     f_speed=p_f_speed;
     r_speed=p_r_speed;
-    System.out.println("LAD Drop All");
+    //System.out.println("LAD Drop All");
   }
 
   // Called just before this Command runs the first time

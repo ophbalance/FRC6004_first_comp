@@ -28,7 +28,7 @@ public class squishyAxis extends Command {
   @Override
   protected void execute() {
     Robot.squishy.intakeUpdate(Robot.m_oi._squishy.getRawAxis(RobotMap.SQUISHY_XBOX_LEFTSTICK));
-    System.out.println("Squishy Intake Axis called");
+    //System.out.println("Squishy Intake Axis called");
   }
 
   // Make this return true when this Command no longer needs to run execute()

@@ -93,10 +93,12 @@ public class LAD extends Subsystem {
     }
     if ( autoBalanceXMode ) {
         double pitchAngleRadians = pitchAngleDegrees * (Math.PI / 180.0);
-        p_front = Math.sin(pitchAngleRadians) * -1;
-        p_rear = Math.sin(pitchAngleRadians) * -1;
+        //p_front = Math.sin(pitchAngleRadians) * -1;
+        //p_rear = Math.sin(pitchAngleRadians) * -1;
+        System.out.println(Math.sin(pitchAngleRadians) * -1);
+        //System.out.println(Math.sin(pitchAngleRadians) * -1);
     }
-    updateFront(p_front);
-    updateRear(p_rear);
+    //updateFront(p_front);
+    //updateRear(p_rear);
   }
 }
